@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-StackoverflowMlsdev::Application.config.secret_key_base = '89f82daf5cde1e43f9ae0616777ff8d3b0d8fd920486c739564cc793b01e941e70322761bfa6250767f4ed6c0fbf3242e137e16d218d9719cc135ac13d8be22e'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+StackoverflowMlsdev::Application.config.secret_key_base = secure_token
