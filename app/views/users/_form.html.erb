@@ -20,8 +20,12 @@
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :image_url %><br>
-    <%= f.text_field :image_url %>
+    <%= f.label :password %><br>
+    <%= f.text_field :password%>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation, "Confirmation" %><br>
+    <%= f.text_field :password_confirmation%>
   </div>
   <div class="field">
     <%= f.label :date_bith %><br>
@@ -40,6 +44,6 @@
     <%= f.text_area :adrress %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Создать", class: "btn btn-large btn-primary" %>
   </div>
 <% end %>
