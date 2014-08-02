@@ -1,0 +1,13 @@
+<li>
+  <span class="content"><%= post.content %></span>
+  <span class="timestamp">
+    Написано <%= time_ago_in_words(post.created_at) %> назад.
+  </span>
+  <%= link_to "Ответить", "#" %>
+  <% if current_user?(post.user) %>
+    <%= link_to "Редактировать", "#" %>
+    <%= link_to "Удалить", post, method: :delete,
+                                     data: { confirm: "You sure?" },
+                                     title: post.content %>
+  <% end %>
+</li>
